@@ -1,0 +1,19 @@
+// Create User
+load('examples/api/database.sx')
+import http
+
+let db = createDatabase('users')
+let user = http.post
+
+if user != null then
+    if user.id == null then
+        print({ error: 'User ID is required' })
+    else
+        let users = db.read()
+        users[user.id] = user
+        db.save(users)
+        print({ success: true, message: 'User created/updated', user: user })
+    end
+else
+    print({ error: 'No user data provided' })
+end

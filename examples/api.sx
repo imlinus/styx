@@ -1,0 +1,25 @@
+// This script is intended to be run via the Styx server.
+// It reads GET parameters and returns a JSON response.
+
+let userId = http.get.id
+
+if userId == null then
+  http.status(400)
+  print({
+    error: 'Missing query parameter: id',
+    usage: '/api.sx?id=123'
+  })
+else
+  // Setting a custom header
+  http.header('X-Powered-By', 'Styx')
+  
+  // Returning a hash automatically converts it to JSON
+  print({
+    status: 'success',
+    data: {
+      id: userId,
+      timestamp: time.iso(),
+      ip: http.ip
+    }
+  })
+end

@@ -1,0 +1,36 @@
+// Demonstrates conditionals and loops.
+
+let score = 85
+let grade = ''
+
+// If/Then/Else
+if score >= 90 then
+  grade = 'A'
+elseif score >= 80 then
+  grade = 'B'
+elseif score >= 70 then
+  grade = 'C'
+else
+  grade = 'F'
+end
+
+print(`Score: ${score}, Grade: ${grade}`)
+
+// While-style loop
+let count = 3
+loop count > 0
+  print(`Countdown: ${count}`)
+  count = count - 1
+end
+
+// Iterating over a hash (object)
+let fruits = {
+  apple: 'red',
+  banana: 'yellow',
+  kiwi: 'green'
+}
+
+print('Fruit contents:')
+loop name, color in fruits
+  print(`- ${name} is ${color}`)
+end

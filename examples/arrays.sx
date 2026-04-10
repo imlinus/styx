@@ -1,0 +1,15 @@
+// Arrays in Styx
+let colors = ['red', 'green', 'blue']
+
+print('Colors list:', colors)
+print('First color:', colors[0])
+
+// Array iteration
+print('Iterating:')
+loop i, color in colors
+  print(`Index ${i}: ${color}`)
+end
+
+// Array modification
+colors[1] = 'yellow'
+print('Modified colors:', colors)

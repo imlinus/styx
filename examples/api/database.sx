@@ -1,0 +1,21 @@
+// createDatabase factory function
+let createDatabase = function(name)
+    let self = {}
+    
+    self.filePath = `examples/api/data/${name}.json`
+    
+    self.save = function(data)
+        let jsonStr = json.encode(data)
+        return fs.write(self.filePath, jsonStr)
+    end
+    
+    self.read = function()
+        if fs.exists(self.filePath) then
+            let content = fs.read(self.filePath)
+            return json.decode(content)
+        end
+        return {}
+    end
+    
+    return self
+end

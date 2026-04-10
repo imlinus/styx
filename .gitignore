@@ -1,0 +1,10 @@
+# Binaries
+styx
+bin/
+
+# Go stuff
+vendor/
+go.sum
+
+# OS stuff
+.DS_Store

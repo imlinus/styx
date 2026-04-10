@@ -1,0 +1,19 @@
+// Read User(s)
+import createDatabase from '/api/database.sx'
+import http
+
+let db = createDatabase('users')
+let id = http.get['id']
+let users = db.read()
+
+if id != null then
+    let user = users[id]
+    if user != null then
+        print(user)
+    else
+        http.status(404)
+        print({ error: 'User not found' })
+    end
+else
+    print(users)
+end

@@ -1,0 +1,26 @@
+// Update User
+import http
+import createDatabase from '/api/database.sx'
+
+let db = createDatabase('users')
+let id = http.get['id']
+let updateData = http.post
+
+if id == null then
+    print({ error: 'ID parameter required' })
+else
+    let users = db.read()
+    let user = users[id]
+    
+    if user == null then
+        http.status(404)
+        print({ error: 'User not found' })
+    else
+        // In Styx, we don't have a loop for keys yet, 
+        // so we manually update fields or just replace
+        users[id] = updateData
+        db.save(users)
+        print({ success: true, message: 'User updated' })
+    end
+end
+

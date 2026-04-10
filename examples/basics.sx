@@ -1,0 +1,22 @@
+// Demonstrates variables, template literals, and strings.
+
+let name = 'Styx'
+let version = '1.0.0'
+
+// Template literals with interpolation
+let greeting = `Welcome to ${name} v${version}!`
+
+print(greeting)
+
+// String concatenation using ..
+let mood = 'happy'
+print('I am ' .. mood .. ' to be here.')
+
+// Objects (Hashes)
+let user = {
+  id: 42,
+  username: 'linus',
+  tags: ['admin', 'dev']
+}
+
+print('User ID:', user.id)

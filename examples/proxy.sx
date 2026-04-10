@@ -1,0 +1,24 @@
+// Demonstrates the native proxy capability.
+
+let domains = {
+  "api.localhost": 3000,
+  "app.localhost": 3001
+}
+
+let host = http.headers.Host
+let port = domains[host]
+
+if port == null then
+  http.status(404)
+  print(`Unknown host: ${host or "undefined"}`)
+else
+  let target = `http://127.0.0.1:${port}${http.url}`
+  
+  log.info(`Proxying ${host} -> ${target}`)
+
+  // Proxy the request with header overrides
+  http.proxy(target, {
+    "X-Forwarded-Host": host,
+    "X-Real-IP": http.ip
+  })
+end
